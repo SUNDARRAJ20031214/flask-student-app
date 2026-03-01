@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td a {
+            background-color: #28a745;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        td a:last-child {
+            background-color: #dc3545;
+        }
+
+        td a:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Student Dashboard</h2>
+
+<a href="/add">Add Student</a>
+<a href="/logout">Logout</a>
+
+<table border="0">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.course }}</td>
+        <td>
+            <a href="/edit/{{ student.id }}">Edit</a>
+            <a href="/delete/{{ student.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
